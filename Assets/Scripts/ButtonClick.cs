@@ -12,6 +12,13 @@ public class ButtonClick : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void ResetGame()
+    {
+        FindObjectOfType<AudioManager>().Play("Click");
+        PlayerPrefs.SetInt("Levels", 1);
+        SceneManager.LoadScene("Levels");
+    }
+
     public void Play()
     {
         FindObjectOfType<AudioManager>().Play("Click");

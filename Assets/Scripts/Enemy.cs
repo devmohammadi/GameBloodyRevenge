@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
         velocity = transform.position.x + velocity;
         links = transform.position.x - links;
+
     }
     void Update()
     {
@@ -82,16 +83,20 @@ public class Enemy : MonoBehaviour
     {
         Destroy(enemy);
     }
-    void OnTriggerStay2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         AttackEnemy(other);
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        isAttack = false;
     }
     void AttackEnemy(Collider2D other)
     {
         if (other.gameObject.tag == "Hero")
         {
             isAttack = true;
-            Attack();
+            StartCoroutine(AttackEnemy());
             transform.eulerAngles = rotation;
         }
     }
@@ -101,6 +106,14 @@ public class Enemy : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPointEnemy.position, attackRange);
+    }
+    IEnumerator AttackEnemy()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(1f, 2f));
+            Attack();
+        }
     }
     void Attack()
     {

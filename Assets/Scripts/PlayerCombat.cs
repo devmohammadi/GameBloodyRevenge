@@ -15,6 +15,8 @@ public class PlayerCombat : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public int level;
+
     void Start()
     {
         FindObjectOfType<AudioManager>().Play("Background");
@@ -30,21 +32,26 @@ public class PlayerCombat : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Barrier")
-        {
-            Hurt();
-            die();
-        }
         if (other.gameObject.tag == "Death")
         {
             FindObjectOfType<AudioManager>().Play("DeathHero");
             FindObjectOfType<AudioManager>().Stop("Background");
+            Invoke("LoadScene", 1);
         }
         if (other.gameObject.tag == "Finish")
         {
             FindObjectOfType<AudioManager>().Play("Finish");
-            PlayerPrefs.SetInt("Levels", 2);
-            Invoke("LoadScene", 1);
+            FindObjectOfType<AudioManager>().Stop("Background");
+            PlayerPrefs.SetInt("Levels", level);
+            if(level != 5)
+            {
+                Invoke("LoadScene", 1);
+            }
+            else
+            {
+                Invoke("LoadSceneWin", 1);
+            }
+            
         }
     }
     void Attack()
@@ -75,12 +82,12 @@ public class PlayerCombat : MonoBehaviour
             die();
         }
     }
-    void Hurt()
+    public void Hurt()
     {
         FindObjectOfType<AudioManager>().Play("HurtHero");
         Animator.SetTrigger("Hurt");
     }
-    void die()
+    public void die()
     {
         Debug.Log("Hero died");
         // play death animation
@@ -93,6 +100,10 @@ public class PlayerCombat : MonoBehaviour
     void LoadScene()
     {
         SceneManager.LoadScene("Levels");
+    }
+    void LoadSceneWin()
+    {
+        SceneManager.LoadScene("Win");
     }
     void OnDrawGizmosSelected()
     {

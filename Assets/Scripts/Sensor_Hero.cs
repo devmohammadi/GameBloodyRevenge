@@ -38,4 +38,5 @@ public class Sensor_Hero : MonoBehaviour {
     {
         m_DisableTimer = duration;
     }
+
 }

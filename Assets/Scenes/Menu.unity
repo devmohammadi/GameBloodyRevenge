@@ -123,6 +123,140 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &85163591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85163593}
+  - component: {fileID: 85163592}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &85163592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85163591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674dd08b87c980442bca3966e562678b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Finish
+    clip: {fileID: 8300000, guid: ed6105c82456c6247bfad8c3e662e566, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword
+    clip: {fileID: 8300000, guid: 46a4dcb96bfc2c34bb3aa1239403aa15, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: c7684b419f4853b49962816822ccd0f1, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Background
+    clip: {fileID: 8300000, guid: e69743c6053b3164eb415b1b9bb73e91, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DeathEnemy1
+    clip: {fileID: 8300000, guid: 825217576bc30674ea119f8080805a5b, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DeathHero
+    clip: {fileID: 8300000, guid: 5117f7e6ed31a244fa7e23e7e710bc01, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HurtEnemy1
+    clip: {fileID: 8300000, guid: d7f24b01b1690784797190f8695b3219, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpEnemy
+    clip: {fileID: 8300000, guid: 1912a8efdb04d22499ffb30af51f6c5e, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: JumpHero
+    clip: {fileID: 8300000, guid: f24ef77ffe157514fa05b4732bafa106, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack
+    clip: {fileID: 8300000, guid: 09db18126515ab8478fa7b6ce19b2087, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HurtHero
+    clip: {fileID: 8300000, guid: d43b8a4cb80039d499f97b8840b1b41b, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 08ac0b20b7bf03c4396a1d54ddc97c82, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Paper
+    clip: {fileID: 8300000, guid: c343fd23d4fd2b046879ed328da34804, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Permission
+    clip: {fileID: 8300000, guid: fcb2e5d24600f1f4588924cef4e9266a, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: win
+    clip: {fileID: 8300000, guid: 7e4d135b762aacf4bad8e024d8b4b21f, type: 3}
+    volume: 5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &85163593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85163591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214499845
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,8 +404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00031674, y: 6.57}
-  m_SizeDelta: {x: 420.33, y: 147.47}
+  m_AnchoredPosition: {x: -0.000005722, y: 1.75}
+  m_SizeDelta: {x: 138.09, y: 49.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &422439697
 MonoBehaviour:
@@ -295,7 +429,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 60
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -381,56 +515,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &519799426
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 519799428}
-  - component: {fileID: 519799427}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &519799427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519799426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 674dd08b87c980442bca3966e562678b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Click
-    clip: {fileID: 8300000, guid: 08ac0b20b7bf03c4396a1d54ddc97c82, type: 3}
-    volume: 5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
---- !u!4 &519799428
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519799426}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &708772456
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,8 +551,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 543.46, y: -10}
-  m_SizeDelta: {x: 140.11, y: 160.61}
+  m_AnchoredPosition: {x: 155, y: -1}
+  m_SizeDelta: {x: 46.03, y: 52.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708772458
 MonoBehaviour:
@@ -762,8 +846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00031674, y: 6.57}
-  m_SizeDelta: {x: 420.33, y: 147.47}
+  m_AnchoredPosition: {x: -0.000005722, y: 3.31}
+  m_SizeDelta: {x: 138.09, y: 46.14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808811366
 MonoBehaviour:
@@ -787,7 +871,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 60
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -954,8 +1038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00031674, y: 6.57}
-  m_SizeDelta: {x: 420.33, y: 147.47}
+  m_AnchoredPosition: {x: -0.000005722, y: 1.73}
+  m_SizeDelta: {x: 138.09, y: 49.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135187998
 MonoBehaviour:
@@ -979,7 +1063,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
-    m_FontSize: 60
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1313,8 +1397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 543.46, y: 242.28}
-  m_SizeDelta: {x: 140.11, y: 160.61}
+  m_AnchoredPosition: {x: 155, y: 81.86}
+  m_SizeDelta: {x: 46.03, y: 52.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1815695259
 MonoBehaviour:
@@ -1446,8 +1530,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 543.46, y: -257}
-  m_SizeDelta: {x: 140.11, y: 160.61}
+  m_AnchoredPosition: {x: 155, y: -82.14}
+  m_SizeDelta: {x: 46.03, y: 52.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832165978
 MonoBehaviour:
