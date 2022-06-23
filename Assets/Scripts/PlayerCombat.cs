@@ -1,55 +1,103 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public Animator animator;
 
     public Transform attackPoint;
-
     public float attackRange = 0.5f;
 
     public LayerMask enemyLayers;
+    public int attackDamage = 100;
 
-    public int attakDamage = 40;
+    public Animator Animator;
 
-    public float attackRate = 2f;
+    public int maxHealth = 100;
+    public int currentHealth;
 
-    float nextAttackTime = 0f;
-
+    void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("Background");
+        currentHealth = maxHealth;
+        Animator = GetComponent<Animator>();
+    }
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetKeyDown("space"))
-            {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
-            }
+            Attack();
         }
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Barrier")
+        {
+            Hurt();
+            die();
+        }
+        if (other.gameObject.tag == "Death")
+        {
+            FindObjectOfType<AudioManager>().Play("DeathHero");
+            FindObjectOfType<AudioManager>().Stop("Background");
+        }
+        if (other.gameObject.tag == "Finish")
+        {
+            FindObjectOfType<AudioManager>().Play("Finish");
+            PlayerPrefs.SetInt("Levels", 2);
+            Invoke("LoadScene", 1);
+        }
+    }
     void Attack()
     {
-        animator.SetTrigger("Attack");
+        FindObjectOfType<AudioManager>().Play("Attack");
+        //Play an attack animation
+        Animator.SetTrigger("Attack");
 
-        Collider2D[] hitEnemies =
-            Physics2D
-                .OverlapCircleAll(attackPoint.position,
-                attackRange,
-                enemyLayers);
+        //Detect enemies in range of attack
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
+        //Damage them
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attakDamage);
+            Debug.Log(enemy.name);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
+    public void TakeDamageHero(int DamageHero)
+    {
+        Hurt();
+        currentHealth -= DamageHero;
+        Debug.Log(currentHealth);
 
+        //play hurt animation
+        if (currentHealth <= 0)
+        {
+            die();
+        }
+    }
+    void Hurt()
+    {
+        FindObjectOfType<AudioManager>().Play("HurtHero");
+        Animator.SetTrigger("Hurt");
+    }
+    void die()
+    {
+        Debug.Log("Hero died");
+        // play death animation
+        FindObjectOfType<AudioManager>().Play("DeathHero");
+        Animator.SetBool("IsDead", true);
+        Animator.SetTrigger("Death");
+        FindObjectOfType<AudioManager>().Stop("Background");
+        Invoke("LoadScene", 2);
+    }
+    void LoadScene()
+    {
+        SceneManager.LoadScene("Levels");
+    }
     void OnDrawGizmosSelected()
     {
-        if (attackPoint == null) return;
+        if (attackPoint == null)
+            return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }

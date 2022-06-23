@@ -22,7 +22,7 @@ public class Hero : MonoBehaviour
 
     private bool isDead = false;
 
-    public GameObject camera;
+    public GameObject Camera;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class Hero : MonoBehaviour
 
     void Update()
     {
-        camera.transform.position = new Vector3(transform.position.x, 0, -10);
+        Camera.transform.position = new Vector3(transform.position.x, 0, -10);
 
         if (!grounded && GSensor.State())
         {
@@ -58,16 +58,7 @@ public class Hero : MonoBehaviour
 
         animator.SetFloat("AirSpeed", rb.velocity.y);
 
-        if (Input.GetKeyDown("e"))
-        {
-            if (!isDead)
-                Death();
-            else
-                Recover();
-        }
-        else if (Input.GetKeyDown("q"))
-            Hurt();
-        else if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
@@ -85,20 +76,6 @@ public class Hero : MonoBehaviour
             AnimState(0);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Barrier")
-        {
-            Death();
-            Invoke("LoadScene", 1);
-        }
-    }
-
-    void LoadScene()
-    {
-        SceneManager.LoadScene("Levels");
-    }
-
     void Death()
     {
         animator.SetTrigger("Death");
@@ -112,16 +89,19 @@ public class Hero : MonoBehaviour
 
     void Hurt()
     {
+        FindObjectOfType<AudioManager>().Play("HurtHero");
         animator.SetTrigger("Hurt");
     }
 
     void Attack()
     {
+        FindObjectOfType<AudioManager>().Play("Attack");
         animator.SetTrigger("Attack");
     }
 
     void Jump()
     {
+        FindObjectOfType<AudioManager>().Play("JumpHero");
         animator.SetTrigger("Jump");
         grounded = false;
         animator.SetBool("Grounded", grounded);

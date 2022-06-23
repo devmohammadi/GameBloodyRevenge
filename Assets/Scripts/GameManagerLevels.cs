@@ -63,16 +63,23 @@ public class GameManagerLevels : MonoBehaviour
         permissionAccess.SetActive(false);
     }
 
+    void Permission()
+    {
+        FindObjectOfType<AudioManager>().Play("Permission");
+        permissionAccess.SetActive(true);
+        Invoke("closepermissionAccess", 1);
+    }
+
     public void Level1()
     {
         if (Levels == 1)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             SceneManager.LoadScene("Level1");
         }
         else
         {
-            permissionAccess.SetActive(true);
-            Invoke("closepermissionAccess", 1);
+            Permission();
         }
     }
 
@@ -80,12 +87,12 @@ public class GameManagerLevels : MonoBehaviour
     {
         if (Levels == 2)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             SceneManager.LoadScene("Level2");
         }
         else
         {
-            permissionAccess.SetActive(true);
-            Invoke("closepermissionAccess", 1);
+            Permission();
         }
     }
 
@@ -93,12 +100,12 @@ public class GameManagerLevels : MonoBehaviour
     {
         if (Levels == 3)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             SceneManager.LoadScene("Level3");
         }
         else
         {
-            permissionAccess.SetActive(true);
-            Invoke("closepermissionAccess", 1);
+            Permission();
         }
     }
 
@@ -106,12 +113,12 @@ public class GameManagerLevels : MonoBehaviour
     {
         if (Levels == 4)
         {
+            FindObjectOfType<AudioManager>().Play("Click");
             SceneManager.LoadScene("Level4");
         }
         else
         {
-            permissionAccess.SetActive(true);
-            Invoke("closepermissionAccess", 1);
+            Permission();
         }
     }
 }
